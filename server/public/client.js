@@ -3,9 +3,12 @@ $(document).ready(onReady)
 
 function onReady() {
     console.log('jQuery is working!!');
-    // TODO set up click handlers
+    // click handlers to add new task
     $('#task-btn').on('click', addTask);
+    // to mark a task as complete
     $('#task-view').on('click', '.task-complete', completeTaskHandler);
+    // to delete a task
+    $('#task-view').on('click', '.task-delete', deleteTaskHandler)
 
     getTasks();
 };
@@ -79,7 +82,7 @@ function completeTask(taskId) {
         data: taskId
     })
     .then(response => {
-        console.log(response);
+        console.log('You updated a task!');
 
         getTasks();     
     })
@@ -94,6 +97,24 @@ function completeTaskHandler() {
 
 
 //DELETE ajax call
+function deleteTask(taskId) {
+    $.ajax({
+        method: 'DELETE',
+        url: `/to-do/${taskId}`
+    })
+    .then(response => {
+        console.log('You DELETED a task!');
+        
+        getTasks();
+    })
+    .catch(error => {
+        console.log('Something went wrong trying to Delete the task', error);    
+    })
+}
+
+function deleteTaskHandler() {
+    deleteTask($(this).data("id"));
+}
 
 
 //AppendToDom

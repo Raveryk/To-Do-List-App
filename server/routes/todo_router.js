@@ -1,4 +1,5 @@
 const express = require('express');
+const { query } = require('../modules/pool');
 const router = express.Router();
 
 //Set up pool for DB connection
@@ -60,6 +61,21 @@ router.put('/:id', (req, res) => {
 
 
 //DELETE request to remove a task from client and DB
+router.delete('/:id', (req, res) => {
+    let taskId = req.params.id;
+    console.log('Delete request Id', taskId);
 
+    let queryText = `DELETE FROM "to-do" WHERE "id"=$1;`;
+    pool.query(queryText, [taskId])
+        .then(response => {
+            console.log('You DELETED a task:', response);
+            res.sendStatus(201); 
+        })
+        .catch(error => {
+            console.log('ERROR deleting task:', error);
+            res.sendStatus(500); 
+        })
+    
+})
 
 module.exports = router;
