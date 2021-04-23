@@ -1,12 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const toDoRouter = require('./routes/todo_router.js');
+const toDoRouter = require('./routes/todo_router');
 
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 
 //routes
-app.use('/todo', toDoRouter);
+app.use('/to-do', toDoRouter);
 
 app.use(express.static('server/public'));
 

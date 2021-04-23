@@ -4,7 +4,23 @@ $(document).ready(onReady)
 function onReady() {
     console.log('jQuery is working!!');
     // TODO set up click handlers
+    $('#task-btn').on('click', addTask);
+
+    getTasks();
 };
+
+
+
+function addTask() {
+    console.log('Add task button clicked.');
+    let newTask = {
+        task: $('#task-input').val(),
+        due_date: $('#date-input').val(),
+        isComplete: 'False'
+    };
+    saveTask(newTask);
+    
+}
 
 
 
@@ -15,7 +31,7 @@ function getTasks() {
 
     $.ajax({
         type: 'GET',
-        url: '/todo'
+        url: '/to-do'
     }).then(response => {
         console.log(response);
         //loop through response array to GET all tasks
@@ -41,8 +57,8 @@ function saveTask(newTask) {
     
     $.ajax({
         type: 'POST',
-        url: '/todo',
-        data: newTask,
+        url: '/to-do',
+        data: newTask
     }).then(response => {
         console.log('Response from server', response);
         getTasks();
