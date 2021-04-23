@@ -10,8 +10,8 @@ SET UP
 [X] Set up routers
 [X] Create PORT for server to listen on 
     ---Database
-[ ] Set up Database named `weekend-to-do-app` in Postico
-[ ] Link Database to Server
+[X] Set up Database named `weekend-to-do-app` in Postico
+[X] Link Database to Server
 
 
 
