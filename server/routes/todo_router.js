@@ -4,7 +4,19 @@ const router = express.Router();
 //Set up pool for DB connection
 const pool = require('../modules/pool');
 
+
 //GET request to retrieve tasks from DB
+router.get('/', (req, res) => {
+    let queryText = `SELECT * FROM "todo";`;
+    pool.query(queryText).then(result => {
+        //sending back result in an object
+        res.send(result.rows);
+    })
+    .catch(error => {
+        console.log('Error getting task', error)
+        res.sendStatus(500);
+    })
+})
 
 
 

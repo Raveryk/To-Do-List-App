@@ -9,6 +9,30 @@ function onReady() {
 
 
 //GET ajax call
+function getTasks() {
+    console.log('In getTasks');
+    $('#task-view').empty();
+
+    $.ajax({
+        type: 'GET',
+        url: '/todo'
+    }).then(response => {
+        console.log(response);
+        //loop through response array to GET all tasks
+        for( let job of response ) {
+            $('#task-view').append(`<tr>
+            <td>${job.task}</td>
+            <td>${job.due_date}</td>
+            <td>${job.isComplete}</td>
+            <td><button class="task-complete" data-id="${job.id}">Task Complete</button></td>
+            <td><button class="task-delete" data-id="${job.id}">Delete</button></td>
+            </tr>`);
+        } //end loop
+    }).catch(error => {
+        console.log('error in GET call', error);
+    });
+    
+}
 
 
 //POST ajax call
@@ -21,7 +45,7 @@ function saveTask(newTask) {
         data: newTask,
     }).then(response => {
         console.log('Response from server', response);
-        //AppendToDom function
+        getTasks();
     }).catch(error => {
         console.log('There was an error during ajax POST call', error);
         alert('Unable to add task. Please try again later.');   
@@ -36,3 +60,6 @@ function saveTask(newTask) {
 
 
 //AppendToDom
+function renderTasks() {
+
+}
