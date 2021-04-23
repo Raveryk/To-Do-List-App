@@ -5,6 +5,7 @@ function onReady() {
     console.log('jQuery is working!!');
     // TODO set up click handlers
     $('#task-btn').on('click', addTask);
+    $('#task-view').on('click', '.task-complete', completeTaskHandler);
 
     getTasks();
 };
@@ -13,10 +14,11 @@ function onReady() {
 
 function addTask() {
     console.log('Add task button clicked.');
+    
     let newTask = {
         task: $('#task-input').val(),
         due_date: $('#date-input').val(),
-        isComplete: 'False'
+        isComplete: false
     };
     saveTask(newTask);
     
@@ -70,6 +72,25 @@ function saveTask(newTask) {
 
 
 //PUT ajax call
+function completeTask(taskId) {
+    $.ajax({
+        method: 'PUT',
+        url: `/to-do/${taskId}`,
+        data: taskId
+    })
+    .then(response => {
+        console.log(response);
+
+        getTasks();     
+    })
+    .catch(error => {
+        console.log('Error updating task', error);   
+    })
+}
+
+function completeTaskHandler() {
+    completeTask($(this).data("id"));
+}
 
 
 //DELETE ajax call

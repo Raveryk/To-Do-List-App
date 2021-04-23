@@ -41,6 +41,22 @@ router.post('/', (req, res) => {
 })
 
 //PUT request to update the task to show that it has been completed on client and DB
+router.put('/:id', (req, res) => {
+    let taskId = req.params.id;
+
+    let queryText = `UPDATE "to-do" SET "isComplete" = 'True' WHERE "id" = $1;`;
+
+    pool.query(queryText, [taskId])
+        .then(response => {
+            console.log('You COMPLETED a task', response);
+            res.sendStatus(201);    
+        })
+        .catch(error => {
+            console.log('ERROR trying to update task', error);
+            res.sendStatus(500);   
+        })
+
+})
 
 
 //DELETE request to remove a task from client and DB
