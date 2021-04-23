@@ -6,16 +6,28 @@ SET UP
     [X] Link files together 
     ---In Server folder
 [X] Create Server side files - server.js, possibly router files
-[ ] Install express and pg
-[ ] Set up routers
+[X] Install express and pg
+[X] Set up routers
+[X] Create PORT for server to listen on 
     ---Database
 [ ] Set up Database named `weekend-to-do-app` in Postico
 [ ] Link Database to Server
 
 
 
+Server Side
+[ ] GET request to retrieve tasks from DB
+[ ] POST request to add new task to the DB
+[ ] PUT request to update the task to show that it has been completed on client and DB
+[ ] DELETE request to remove a task from client and DB
+
 Client Side
-[ ] 
+[ ] GET request to retrieve tasks from DB
+[ ] POST request to add new task to the DB
+[ ] PUT request to update the task to show that it has been completed on client and DB
+[ ] DELETE request to remove a task from client and DB
+
+[ ] Set up Click Handlers
 
 
 
