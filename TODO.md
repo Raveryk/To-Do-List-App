@@ -26,16 +26,16 @@ Client Side
     
 [X] POST request to add new task to the DB
     [X] Connect Submit button
-[ ] PUT request to update the task to show that it has been completed on client and DB
-    [ ] Connect Completed button
-[ ] DELETE request to remove a task from client and DB
-    [ ] Connect Delete button
+[X] PUT request to update the task to show that it has been completed on client and DB
+    [X] Connect Completed button
+[X] DELETE request to remove a task from client and DB
+    [X] Connect Delete button
 [X] Append to DOM function 
     [X] Runs after GET Request
-    [ ] Runs after PUT request
-    [ ] Runs after DELETE request
+    [X] Runs after PUT request
+    [X] Runs after DELETE request
 
-[ ] Set up Click Handlers
+[X] Set up Click Handlers
 
 
 Styling

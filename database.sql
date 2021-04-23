@@ -9,7 +9,8 @@ CREATE TABLE "to-do" (
 INSERT INTO "to-do" ("task", "due_date", "isComplete")
 
 VALUES
-    ('Feed the dog', '4/23/2021', 'False'),
-    ('Mow the lawn', '4/26/2021', 'False');
+    ('Buy groceries', '4/23/2021', 'false'),
+    ('Mow the lawn', '4/26/2021', 'false'),
+    ('Get Project completed', '4/25/2021', 'false');
 
 SELECT * FROM "to-do";

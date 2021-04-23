@@ -21,7 +21,7 @@ function addTask() {
     let newTask = {
         task: $('#task-input').val(),
         due_date: $('#date-input').val(),
-        isComplete: false
+        isComplete: 'false'
     };
     saveTask(newTask);
     
@@ -41,14 +41,26 @@ function getTasks() {
         console.log(response);
         //loop through response array to GET all tasks
         for( let job of response ) {
-            $('#task-view').append(`<tr>
+            if( job.isComplete == true) {
+            $('#task-view').append(`<tr class="task-row">
             <td>${job.task}</td>
             <td>${job.due_date}</td>
             <td>${job.isComplete}</td>
-            <td><button class="task-complete" data-id="${job.id}">Task Complete</button></td>
+            <td></td>
             <td><button class="task-delete" data-id="${job.id}">Delete</button></td>
             </tr>`);
+            $('.task-row').css('text-decoration', 'line-through');
+            } else {
+            $('#task-view').append(`<tr class="task-row">
+            <td>${job.task}</td>
+            <td>${job.due_date}</td>
+            <td>${job.isComplete}</td>
+            <td><button class="task-complete" data-id="${job.id}">Completed</button></td>
+            <td><button class="task-delete" data-id="${job.id}">Delete</button></td>
+            </tr>`);
+            }
         } //end loop
+        
     }).catch(error => {
         console.log('error in GET call', error);
     });
@@ -83,7 +95,7 @@ function completeTask(taskId) {
     })
     .then(response => {
         console.log('You updated a task!');
-
+        //display updated tasks
         getTasks();     
     })
     .catch(error => {
@@ -104,7 +116,7 @@ function deleteTask(taskId) {
     })
     .then(response => {
         console.log('You DELETED a task!');
-        
+        //Display updated tasks
         getTasks();
     })
     .catch(error => {
@@ -117,7 +129,4 @@ function deleteTaskHandler() {
 }
 
 
-//AppendToDom
-function renderTasks() {
 
-}
