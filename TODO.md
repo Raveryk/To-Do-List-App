@@ -16,22 +16,22 @@ SET UP
 
 
 Server Side
-[ ] GET request to retrieve tasks from DB
-[ ] POST request to add new task to the DB
+[X] GET request to retrieve tasks from DB
+[X] POST request to add new task to the DB
 [ ] PUT request to update the task to show that it has been completed on client and DB
 [ ] DELETE request to remove a task from client and DB
 
 Client Side
-[ ] GET request to retrieve tasks from DB
+[X] GET request to retrieve tasks from DB
     
-[ ] POST request to add new task to the DB
-    [ ] Connect Submit button
+[X] POST request to add new task to the DB
+    [X] Connect Submit button
 [ ] PUT request to update the task to show that it has been completed on client and DB
     [ ] Connect Completed button
 [ ] DELETE request to remove a task from client and DB
     [ ] Connect Delete button
-[ ] Append to DOM function 
-    [ ] Runs after GET Request
+[X] Append to DOM function 
+    [X] Runs after GET Request
     [ ] Runs after PUT request
     [ ] Runs after DELETE request
 
