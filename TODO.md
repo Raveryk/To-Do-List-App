@@ -18,8 +18,8 @@ SET UP
 Server Side
 [X] GET request to retrieve tasks from DB
 [X] POST request to add new task to the DB
-[ ] PUT request to update the task to show that it has been completed on client and DB
-[ ] DELETE request to remove a task from client and DB
+[X] PUT request to update the task to show that it has been completed on client and DB
+[X] DELETE request to remove a task from client and DB
 
 Client Side
 [X] GET request to retrieve tasks from DB
@@ -39,7 +39,9 @@ Client Side
 
 
 Styling
-[ ] Completed tasks need visual change...
+[X] Completed tasks need visual change...
+    [X] Completed button is removed upon task completion
+    [X] CSS prop is triggered upon task completion
 
 
 

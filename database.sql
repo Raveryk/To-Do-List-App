@@ -11,6 +11,6 @@ INSERT INTO "to-do" ("task", "due_date", "isComplete")
 VALUES
     ('Buy groceries', '4/23/2021', 'false'),
     ('Mow the lawn', '4/26/2021', 'false'),
-    ('Get Project completed', '4/25/2021', 'false');
+    ('Get project completed', '4/25/2021', 'false');
 
 SELECT * FROM "to-do";

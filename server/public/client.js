@@ -1,6 +1,7 @@
 
 $(document).ready(onReady) 
 
+
 function onReady() {
     console.log('jQuery is working!!');
     // click handlers to add new task
@@ -10,6 +11,7 @@ function onReady() {
     // to delete a task
     $('#task-view').on('click', '.task-delete', deleteTaskHandler)
 
+
     getTasks();
 };
 
@@ -17,6 +19,7 @@ function onReady() {
 
 function addTask() {
     console.log('Add task button clicked.');
+    
     
     let newTask = {
         task: $('#task-input').val(),
@@ -49,9 +52,9 @@ function getTasks() {
             <td></td>
             <td><button class="task-delete" data-id="${job.id}">Delete</button></td>
             </tr>`);
-            $('.task-row').css('text-decoration', 'line-through');
+            $('.task-row').css('text-decoration', 'line-through').css('color', 'green');
             } else {
-            $('#task-view').append(`<tr class="task-row">
+            $('#task-view').append(`<tr>
             <td>${job.task}</td>
             <td>${job.due_date}</td>
             <td>${job.isComplete}</td>

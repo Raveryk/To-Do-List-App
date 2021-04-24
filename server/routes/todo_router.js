@@ -5,10 +5,13 @@ const router = express.Router();
 //Set up pool for DB connection
 const pool = require('../modules/pool');
 
+//TODO LOOK INTO THIS TOMORROW!!!
+// const moment = require('moment');
+
 
 //GET request to retrieve tasks from DB
 router.get('/', (req, res) => {
-    let queryText = `SELECT * FROM "to-do";`;
+    let queryText = `SELECT * FROM "to-do" ORDER BY "due_date" DESC;`;
     pool.query(queryText).then(result => {
         //sending back result in an object
         res.send(result.rows);
@@ -43,8 +46,10 @@ router.post('/', (req, res) => {
 
 //PUT request to update the task to show that it has been completed on client and DB
 router.put('/:id', (req, res) => {
+    //specifying which task to target...id
     let taskId = req.params.id;
 
+    //id $1 refers to position in taskId array below
     let queryText = `UPDATE "to-do" SET "isComplete" = 'True' WHERE "id" = $1;`;
 
     pool.query(queryText, [taskId])
@@ -62,6 +67,7 @@ router.put('/:id', (req, res) => {
 
 //DELETE request to remove a task from client and DB
 router.delete('/:id', (req, res) => {
+    //specifying which task to target...id
     let taskId = req.params.id;
     console.log('Delete request Id', taskId);
 
