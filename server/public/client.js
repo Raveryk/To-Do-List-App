@@ -52,8 +52,8 @@ function getTasks() {
         for( let job of response ) {
             if( job.isComplete == true) {
             $('#task-view').append(`<tr class="task-row">
-            <td>${job.task}</td>
-            <td>${job.due_date.slice(0,10)}</td>
+            <td class="columnOne">${job.task}</td>
+            <td>${job.due_date.slice(5,10)}</td>
             <td>${job.isComplete}</td>
             <td></td>
             <td><button class="task-delete" data-id="${job.id}">Delete</button></td>
@@ -61,8 +61,8 @@ function getTasks() {
             $('.task-row').css('text-decoration', 'line-through').css('color', 'green');
             } else {
             $('#task-view').append(`<tr>
-            <td>${job.task}</td>
-            <td>${job.due_date.slice(0,10)}</td>
+            <td class="columnOne">${job.task}</td>
+            <td>${job.due_date.slice(5,10)}</td>
             <td>${job.isComplete}</td>
             <td><button class="task-complete" data-id="${job.id}">Completed</button></td>
             <td><button class="task-delete" data-id="${job.id}">Delete</button></td>

@@ -39,10 +39,16 @@ header {
 
   th {
       padding: 14px;
+      text-align: center;
   }
 
   td {
       padding: 5px;
+      text-align: center;
+      }
+
+  .columnOne {
+    background-color: white;
   }
 
 
