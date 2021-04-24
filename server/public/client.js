@@ -13,9 +13,23 @@ function onReady() {
     // to delete a task
     $('#task-view').on('click', '.task-delete', deleteTaskHandler)
 
+    textCount();
+
 
     getTasks();
 };
+
+function textCount() { //Heavily relied on this code at this link: https://www.codeply.com/go/s0F9Iz38yn/bootstrap-textarea-with-character-count-_-bootstrap-3
+    let textMax = 30;
+    $('#countText').html('0/' + textMax);
+
+    $('#task-input').keyup(function() {
+        let textLength = $('#task-input').val().length;
+        let textRemaining = textMax - textLength;
+
+        $('#countText').html(textLength + '/' + textMax);
+    })
+}
 
 
 
