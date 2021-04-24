@@ -2,6 +2,8 @@
 $(document).ready(onReady) 
 
 
+
+
 function onReady() {
     console.log('jQuery is working!!');
     // click handlers to add new task
@@ -19,18 +21,21 @@ function onReady() {
 
 function addTask() {
     console.log('Add task button clicked.');
+    let date = $('#date-input').val();
+    // dateShortcode.parse('{MM/DD/YYYY}', date);
+
     
-    
+
     let newTask = {
         task: $('#task-input').val(),
-        due_date: $('#date-input').val(),
+        due_date: date,
         isComplete: 'false'
     };
     saveTask(newTask);
     
 }
 
-
+// job.due_date.slice(0,10)
 
 //GET ajax call
 function getTasks() {
@@ -41,13 +46,14 @@ function getTasks() {
         type: 'GET',
         url: '/to-do'
     }).then(response => {
+
         console.log(response);
         //loop through response array to GET all tasks
         for( let job of response ) {
             if( job.isComplete == true) {
             $('#task-view').append(`<tr class="task-row">
             <td>${job.task}</td>
-            <td>${job.due_date}</td>
+            <td>${job.due_date.slice(0,10)}</td>
             <td>${job.isComplete}</td>
             <td></td>
             <td><button class="task-delete" data-id="${job.id}">Delete</button></td>
@@ -56,7 +62,7 @@ function getTasks() {
             } else {
             $('#task-view').append(`<tr>
             <td>${job.task}</td>
-            <td>${job.due_date}</td>
+            <td>${job.due_date.slice(0,10)}</td>
             <td>${job.isComplete}</td>
             <td><button class="task-complete" data-id="${job.id}">Completed</button></td>
             <td><button class="task-delete" data-id="${job.id}">Delete</button></td>

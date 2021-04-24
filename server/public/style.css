@@ -3,6 +3,8 @@ body {
     background-color: wheat;
     margin-right: 20%;
     margin-left: 20%;
+    font-size: 1vw;
+
     
 }
 
@@ -32,17 +34,17 @@ header {
       border-spacing: 5px;
       width: 75%;
       margin-left: 16%;
-
+      table-layout: fixed;
   }
 
   th {
       padding: 14px;
-      font-family: 
   }
 
   td {
       padding: 5px;
   }
+
 
   
   
@@ -59,15 +61,17 @@ header {
     margin-top: 5%;
     margin-bottom: 5%;
     margin-left: 1%;
+  }
 
+  #image {
+    background-image: url(vendors/Colored\ College\ Ruled\ Paper-1.png);
+    background-size: 60vw;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em 1em rgba(0, 0, 0, .5);
   }
 
   #task-table {
     margin: 1%;
     padding-bottom: 75%;
-    background-image: url(vendors/Colored\ College\ Ruled\ Paper-1.png);
-    background-size: cover;
-    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em 1em rgba(0, 0, 0, .5);
 
 
   }

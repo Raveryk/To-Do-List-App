@@ -9,9 +9,10 @@ const pool = require('../modules/pool');
 // const moment = require('moment');
 
 
+
 //GET request to retrieve tasks from DB
 router.get('/', (req, res) => {
-    let queryText = `SELECT * FROM "to-do" ORDER BY "due_date" DESC;`;
+    let queryText = `SELECT * FROM "to-do" ORDER BY "task" DESC;`;
     pool.query(queryText).then(result => {
         //sending back result in an object
         res.send(result.rows);
