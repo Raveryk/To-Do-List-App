@@ -66,20 +66,20 @@ function getTasks() {
         for( let job of response ) {
             if( job.isComplete == true) {
             $('#task-view').append(`<tr class="task-row">
-            <td class="columnOne">${job.task}</td>
-            <td>${job.due_date.slice(5,10)}</td>
-            <td>${job.isComplete}</td>
-            <td></td>
-            <td><button class="task-delete btn btn-outline-danger btn-sm" data-id="${job.id}">Delete</button></td>
+            <td><div class="col-md-6">${job.task}</div></td>
+            <td><div class="col-md-6">${job.due_date.slice(5,10)}</div></td>
+            <td><div class="col-md-6">${job.isComplete}</div></td>
+            <td><div class="col-md-6"></div></td>
+            <td><button class="task-delete btn btn-outline-danger btn-sm btn-responsive" data-id="${job.id}">Delete</button></td>
             </tr>`);
             $('.task-row').css('text-decoration', 'line-through').css('color', 'green');
             } else {
             $('#task-view').append(`<tr>
-            <td class="columnOne">${job.task}</td>
-            <td>${job.due_date.slice(5,10)}</td>
-            <td>${job.isComplete}</td>
-            <td><button class="task-complete btn btn-outline-success btn-sm" data-id="${job.id}">Completed</button></td>
-            <td><button class="task-delete btn btn-outline-danger btn-sm" data-id="${job.id}">Delete</button></td>
+            <td><div class="col-md-6">${job.task}</div></td>
+            <td><div class="col-md-6">${job.due_date.slice(5,10)}</div></td>
+            <td><div class="col-md-6">${job.isComplete}</div></td>
+            <td><button class="task-complete btn btn-outline-success btn-sm btn-responsive" data-id="${job.id}">Completed</button></td>
+            <td><button class="task-delete btn btn-outline-danger btn-sm btn-responsive" data-id="${job.id}">Delete</button></td>
             </tr>`);
             }
         } //end loop

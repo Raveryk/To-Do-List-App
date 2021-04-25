@@ -21,7 +21,7 @@ header {
   }
 
   h2 {
-    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    font-family: Delius-Regular;
     text-decoration: underline;
     margin-bottom: 3%;
   }
@@ -47,6 +47,7 @@ header {
       padding: 5px;
       text-align: center;
       background-color: rgba(245, 245, 245, 0.904);
+      font-family: Delius-Regular;
     
       }
 
@@ -54,11 +55,27 @@ header {
         width: 25%;
       }
 
+      @media (max-width: 768px) {
+        .btn-responsive, .input-group {
+          padding:2px 4px;
+          font-size:80%;
+          line-height: 1;
+        }
+      }
+      
+      @media (min-width: 769px) and (max-width: 992px) {
+        .btn-responsive, .input-group {
+          padding:4px 9px;
+          font-size:90%;
+          line-height: 1.2;
+        }
+      }
+
   
   #title {
     text-align: center;
     padding: 20px;
-    /* font-family:Verdana, Geneva, Tahoma, sans-serif; */
+    font-family:Delius-Regular;
     font-weight: bold;
 
     
