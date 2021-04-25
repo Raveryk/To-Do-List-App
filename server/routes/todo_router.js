@@ -12,7 +12,7 @@ const pool = require('../modules/pool');
 
 //GET request to retrieve tasks from DB
 router.get('/', (req, res) => {
-    let queryText = `SELECT * FROM "to-do" ORDER BY "task" DESC;`;
+    let queryText = `SELECT * FROM "to-do" ORDER BY "due_date";`;
     pool.query(queryText).then(result => {
         //sending back result in an object
         res.send(result.rows);

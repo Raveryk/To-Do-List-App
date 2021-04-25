@@ -68,21 +68,14 @@ function getTasks() {
         //variable to grab the current day/time --- I sliced the string to only show month and day -- couldn't figure out formatting.
         let timeStamp = new Date().toISOString();
         
-        //Sweet Alert to notify user that they have completed a task.
-        swal({
 
-        title: "Completed Task!",
-        text: `GREAT JOB!!! You completed the task on ${timeStamp.slice(5,10)}!`,
-        icon: "success",
-
-        })
             
         //Append task list to DOM.
         $('#task-view').append(`<tr class="task-row">
         <td class="task-column"><div class="col-md-6">${job.task}</div></td>
         <td><div class="col-md-6">${job.due_date.slice(5,10)}</div></td>
-        <td><div class="col-md-10">${job.isComplete}</div></td>
-        <td><div class="col-md-10">${timeStamp.slice(5,10)}</div></td>
+        <td><div class="col-md-12">on ${timeStamp.slice(5,10)}</div></td>
+        <td><div class="col-md-10"></div></td>
         <td><button class="task-delete btn btn-outline-danger btn-sm btn-responsive" data-id="${job.id}">Delete</button></td>
         </tr>`);
         $('.task-row').css('text-decoration', 'line-through').css('color', 'green');
@@ -90,7 +83,7 @@ function getTasks() {
         $('#task-view').append(`<tr>
         <td class="task-column"><div class="col-md-6">${job.task}</div></td>
         <td><div class="col-md-6">${job.due_date.slice(5,10)}</div></td>
-        <td><div class="col-md-10">${job.isComplete}</div></td>
+        <td><div class="col-md-12">${job.isComplete}</div></td>
         <td><button class="task-complete btn btn-outline-success btn-sm btn-responsive" data-id="${job.id}">Completed</button></td>
         <td><button class="task-delete btn btn-outline-danger btn-sm btn-responsive" data-id="${job.id}">Delete</button></td>
         </tr>`);
@@ -142,7 +135,18 @@ function completeTask(taskId) {
 
 // function to target specific task to mark as complete
 function completeTaskHandler() {
-    completeTask($(this).data("id"));
+    // completeTask($(this).data("id"));
+     //Sweet Alert to notify user that they have completed a task.
+     let timeStamp = new Date().toISOString();
+
+     swal({
+        title: "Completed Task!",
+        text: `GREAT JOB!!! You completed the task on ${timeStamp.slice(5,10)}!`,
+        icon: "success",
+        })
+        .then(response => {
+            completeTask($(this).data("id")); 
+          });
 }
 
 
