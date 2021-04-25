@@ -1,3 +1,4 @@
+// const { default: swal } = require("sweetalert");
 
 $(document).ready(onReady) 
 
@@ -18,6 +19,8 @@ function onReady() {
 
     getTasks();
 };
+
+
 
 function textCount() { //Heavily relied on this code at this link: https://www.codeply.com/go/s0F9Iz38yn/bootstrap-textarea-with-character-count-_-bootstrap-3
     let textMax = 35;
@@ -148,8 +151,24 @@ function deleteTask(taskId) {
 }
 
 function deleteTaskHandler() {
-    deleteTask($(this).data("id"));
-}
+    swal({
+        title: "Delete Task",
+        text: "Are you sure?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((task) => {
+        if (task) {
+          swal("Your task has been deleted!", {
+            icon: "success",
+          });
+          deleteTask($(this).data("id"))
+        } else {
+          swal("Your task has NOT been deleted!");
+        }
+      });
+};
 
 
 
