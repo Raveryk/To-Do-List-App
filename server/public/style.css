@@ -4,6 +4,7 @@ body {
     margin-right: 20%;
     margin-left: 20%;
     font-size: 1vw;
+    margin-bottom: max(100px);
 
     
 }
@@ -20,9 +21,9 @@ header {
   }
 
   h2 {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Delius-Regular;
     text-decoration: underline;
-    margin-bottom: 3%;
+    margin-bottom: 2%;
   }
 
   /* table, th, td {
@@ -38,27 +39,43 @@ header {
   }
 
   th {
-      padding: 14px;
+      padding: 15px;
       text-align: center;
   }
 
   td {
       padding: 5px;
       text-align: center;
+      background-color: rgba(245, 245, 245, 0.904);
+      font-family: Delius-Regular;
+    
       }
 
-  .columnOne {
-    background-color: white;
-  }
+  .form-control {
+        width: 25%;
+      }
 
+      @media (max-width: 768px) {
+        .btn-responsive, .input-group {
+          padding:2px 4px;
+          font-size:80%;
+          line-height: 1;
+        }
+      }
+      
+      @media (min-width: 769px) and (max-width: 992px) {
+        .btn-responsive, .input-group {
+          padding:4px 9px;
+          font-size:90%;
+          line-height: 1.2;
+        }
+      }
 
-  
-  
   
   #title {
     text-align: center;
     padding: 20px;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family:Delius-Regular;
     font-weight: bold;
 
     
@@ -73,6 +90,7 @@ header {
     background-image: url(vendors/Colored\ College\ Ruled\ Paper-1.png);
     background-size: 60vw;
     box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em 1em rgba(0, 0, 0, .5);
+    padding-top: 5px;
   }
 
   #task-table {
@@ -85,6 +103,12 @@ header {
   #to-do-title {
       text-align: center;
   }
+
+  #countText {
+    margin: 5px;
+  }
+
+
 
 
 

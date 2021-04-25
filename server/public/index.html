@@ -11,31 +11,38 @@
     <title>To-Do List</title>
 </head>
 <body>
+    <div class="container-fluid">
     <header><h1 id="title">To-Do List App</h1></header>
 
     <section id="add-task">
-        <h2>Add Task</h2>
-        <input type="text" id="task-input" placeholder="task" maxlength="20" required></input>
-        <input type="date" id="date-input" placeholder="xx/xx/xxxx" required></input>
-        <button type="submit" id="task-btn">Add Task</button>
+        <div class="input-group col-lg container-fluid">
+            <input type="text" class="form-control form-input" id="task-input" placeholder="task" maxlength="30" required></input>
+                <span class="pull-right label label-default" id="countText"></span>
+            <input type="date" class="form-control" id="date-input" placeholder="xx/xx/xxxx" required></input>
+            <button class="btn btn-outline-primary btn-responsive" type="submit" id="task-btn">Add Task</button>
+        </div>
     </section>
     <div id="image">
     <section id="task-table">
       
         <h2 id="to-do-title">To-Do List</h2>
         <table>
-            <thead>
-                <tr>
-                    <th>TASK</th>
-                    <th>DUE DATE</th>
-                    <th>COMPLETED</th>
-                    <th></th>
-                    <th>DELETE</th>
-                </tr>
-            </thead>
-            <tbody id="task-view">
+            
+                <div class="row"></div>
+                    <thead>
+                        <tr>
+                            <th><div class="col-md-6">TASK</div></th>
+                            <th><div class="col-md-1">DUE</div></th>
+                            <th><div class="col-md-1">COMPLETED</div></th>
+                            <th><div class="col-md-2"></div></th>
+                            <th><div class="col-md-2"></div></th>
+                        </tr>
+                    </thead>
+                </div>
+                <tbody id="task-view">
 
-            </tbody>
+                </tbody>
+            </div>
         </table>
     </section>
     </div>      

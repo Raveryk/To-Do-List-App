@@ -13,9 +13,23 @@ function onReady() {
     // to delete a task
     $('#task-view').on('click', '.task-delete', deleteTaskHandler)
 
+    textCount();
+
 
     getTasks();
 };
+
+function textCount() { //Heavily relied on this code at this link: https://www.codeply.com/go/s0F9Iz38yn/bootstrap-textarea-with-character-count-_-bootstrap-3
+    let textMax = 30;
+    $('#countText').html('0/' + textMax);
+
+    $('#task-input').keyup(function() {
+        let textLength = $('#task-input').val().length;
+        let textRemaining = textMax - textLength;
+
+        $('#countText').html(textLength + '/' + textMax);
+    })
+}
 
 
 
@@ -52,20 +66,20 @@ function getTasks() {
         for( let job of response ) {
             if( job.isComplete == true) {
             $('#task-view').append(`<tr class="task-row">
-            <td class="columnOne">${job.task}</td>
-            <td>${job.due_date.slice(5,10)}</td>
-            <td>${job.isComplete}</td>
-            <td></td>
-            <td><button class="task-delete" data-id="${job.id}">Delete</button></td>
+            <td><div class="col-md-6">${job.task}</div></td>
+            <td><div class="col-md-6">${job.due_date.slice(5,10)}</div></td>
+            <td><div class="col-md-6">${job.isComplete}</div></td>
+            <td><div class="col-md-6"></div></td>
+            <td><button class="task-delete btn btn-outline-danger btn-sm btn-responsive" data-id="${job.id}">Delete</button></td>
             </tr>`);
             $('.task-row').css('text-decoration', 'line-through').css('color', 'green');
             } else {
             $('#task-view').append(`<tr>
-            <td class="columnOne">${job.task}</td>
-            <td>${job.due_date.slice(5,10)}</td>
-            <td>${job.isComplete}</td>
-            <td><button class="task-complete" data-id="${job.id}">Completed</button></td>
-            <td><button class="task-delete" data-id="${job.id}">Delete</button></td>
+            <td><div class="col-md-6">${job.task}</div></td>
+            <td><div class="col-md-6">${job.due_date.slice(5,10)}</div></td>
+            <td><div class="col-md-6">${job.isComplete}</div></td>
+            <td><button class="task-complete btn btn-outline-success btn-sm btn-responsive" data-id="${job.id}">Completed</button></td>
+            <td><button class="task-delete btn btn-outline-danger btn-sm btn-responsive" data-id="${job.id}">Delete</button></td>
             </tr>`);
             }
         } //end loop
