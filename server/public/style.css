@@ -23,7 +23,7 @@ header {
   h2 {
     font-family: Delius-Regular;
     text-decoration: underline;
-    margin-bottom: 3%;
+    margin-bottom: 2%;
   }
 
   /* table, th, td {
@@ -39,7 +39,7 @@ header {
   }
 
   th {
-      padding: 14px;
+      padding: 15px;
       text-align: center;
   }
 
@@ -90,6 +90,7 @@ header {
     background-image: url(vendors/Colored\ College\ Ruled\ Paper-1.png);
     background-size: 60vw;
     box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em 1em rgba(0, 0, 0, .5);
+    padding-top: 5px;
   }
 
   #task-table {
