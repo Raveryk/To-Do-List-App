@@ -20,7 +20,7 @@ function onReady() {
 };
 
 
-
+// Function to count text for task input field.
 function textCount() { //Heavily relied on this code at this link: https://www.codeply.com/go/s0F9Iz38yn/bootstrap-textarea-with-character-count-_-bootstrap-3
     let textMax = 35;
     $('#countText').html('0/' + textMax);
@@ -35,6 +35,7 @@ function textCount() { //Heavily relied on this code at this link: https://www.c
 
 
 
+/// function to grab input elements from DOM inputs
 function addTask() {
     console.log('Add task button clicked.');
     
@@ -44,6 +45,7 @@ function addTask() {
         due_date: $('#date-input').val(),
         isComplete: 'false'
     };
+    // Sends input values to the DB
     saveTask(newTask);
     
 }
@@ -63,27 +65,38 @@ function getTasks() {
         //loop through response array to GET all tasks
         for( let job of response ) {
             if( job.isComplete == true) {
-             
-            let timeStamp = new Date().toISOString();
+        //variable to grab the current day/time --- I sliced the string to only show month and day -- couldn't figure out formatting.
+        let timeStamp = new Date().toISOString();
+        
+        //Sweet Alert to notify user that they have completed a task.
+        swal({
 
-            $('#task-view').append(`<tr class="task-row">
-            <td class="task-column"><div class="col-md-6">${job.task}</div></td>
-            <td><div class="col-md-6">${job.due_date.slice(5,10)}</div></td>
-            <td><div class="col-md-10">${job.isComplete}</div></td>
-            <td><div class="col-md-10">${timeStamp.slice(5,10)}</div></td>
-            <td><button class="task-delete btn btn-outline-danger btn-sm btn-responsive" data-id="${job.id}">Delete</button></td>
-            </tr>`);
-            $('.task-row').css('text-decoration', 'line-through').css('color', 'green');
-            } else {
-            $('#task-view').append(`<tr>
-            <td class="task-column"><div class="col-md-6">${job.task}</div></td>
-            <td><div class="col-md-6">${job.due_date.slice(5,10)}</div></td>
-            <td><div class="col-md-10">${job.isComplete}</div></td>
-            <td><button class="task-complete btn btn-outline-success btn-sm btn-responsive" data-id="${job.id}">Completed</button></td>
-            <td><button class="task-delete btn btn-outline-danger btn-sm btn-responsive" data-id="${job.id}">Delete</button></td>
-            </tr>`);
-            }
-        } //end loop
+        title: "Completed Task!",
+        text: `GREAT JOB!!! You completed the task on ${timeStamp.slice(5,10)}!`,
+        icon: "success",
+
+        })
+            
+        //Append task list to DOM.
+        $('#task-view').append(`<tr class="task-row">
+        <td class="task-column"><div class="col-md-6">${job.task}</div></td>
+        <td><div class="col-md-6">${job.due_date.slice(5,10)}</div></td>
+        <td><div class="col-md-10">${job.isComplete}</div></td>
+        <td><div class="col-md-10">${timeStamp.slice(5,10)}</div></td>
+        <td><button class="task-delete btn btn-outline-danger btn-sm btn-responsive" data-id="${job.id}">Delete</button></td>
+        </tr>`);
+        $('.task-row').css('text-decoration', 'line-through').css('color', 'green');
+        } else {
+        $('#task-view').append(`<tr>
+        <td class="task-column"><div class="col-md-6">${job.task}</div></td>
+        <td><div class="col-md-6">${job.due_date.slice(5,10)}</div></td>
+        <td><div class="col-md-10">${job.isComplete}</div></td>
+        <td><button class="task-complete btn btn-outline-success btn-sm btn-responsive" data-id="${job.id}">Completed</button></td>
+        <td><button class="task-delete btn btn-outline-danger btn-sm btn-responsive" data-id="${job.id}">Delete</button></td>
+        </tr>`);
+        }
+
+    } //end loop
         
     }).catch(error => {
         console.log('error in GET call', error);
@@ -127,12 +140,13 @@ function completeTask(taskId) {
     })
 }
 
+// function to target specific task to mark as complete
 function completeTaskHandler() {
     completeTask($(this).data("id"));
 }
 
 
-//DELETE ajax call
+//DELETE ajax call -
 function deleteTask(taskId) {
     $.ajax({
         method: 'DELETE',
@@ -148,6 +162,7 @@ function deleteTask(taskId) {
     })
 }
 
+//Handler to run delete task function on targeted item -- also added Sweet Alert confirmation.
 function deleteTaskHandler() {
     swal({
         title: "Delete Task",
