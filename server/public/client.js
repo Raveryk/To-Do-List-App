@@ -1,4 +1,3 @@
-// const { default: swal } = require("sweetalert");
 
 $(document).ready(onReady) 
 
@@ -135,10 +134,8 @@ function completeTask(taskId) {
 
 // function to target specific task to mark as complete
 function completeTaskHandler() {
-    // completeTask($(this).data("id"));
-     //Sweet Alert to notify user that they have completed a task.
      let timeStamp = new Date().toISOString();
-
+    //Sweet Alert to notify user that they have completed a task.
      swal({
         title: "Completed Task!",
         text: `GREAT JOB!!! You completed the task on ${timeStamp.slice(5,10)}!`,

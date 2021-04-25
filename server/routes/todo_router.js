@@ -5,8 +5,6 @@ const router = express.Router();
 //Set up pool for DB connection
 const pool = require('../modules/pool');
 
-//TODO LOOK INTO THIS TOMORROW!!!
-// const moment = require('moment');
 
 
 
