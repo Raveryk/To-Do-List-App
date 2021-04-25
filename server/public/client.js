@@ -20,7 +20,7 @@ function onReady() {
 };
 
 function textCount() { //Heavily relied on this code at this link: https://www.codeply.com/go/s0F9Iz38yn/bootstrap-textarea-with-character-count-_-bootstrap-3
-    let textMax = 30;
+    let textMax = 35;
     $('#countText').html('0/' + textMax);
 
     $('#task-input').keyup(function() {
@@ -66,7 +66,7 @@ function getTasks() {
         for( let job of response ) {
             if( job.isComplete == true) {
             $('#task-view').append(`<tr class="task-row">
-            <td><div class="col-md-6">${job.task}</div></td>
+            <td class="task-column"><div class="col-md-6">${job.task}</div></td>
             <td><div class="col-md-6">${job.due_date.slice(5,10)}</div></td>
             <td><div class="col-md-6">${job.isComplete}</div></td>
             <td><div class="col-md-6"></div></td>
@@ -75,7 +75,7 @@ function getTasks() {
             $('.task-row').css('text-decoration', 'line-through').css('color', 'green');
             } else {
             $('#task-view').append(`<tr>
-            <td><div class="col-md-6">${job.task}</div></td>
+            <td class="task-column"><div class="col-md-6">${job.task}</div></td>
             <td><div class="col-md-6">${job.due_date.slice(5,10)}</div></td>
             <td><div class="col-md-6">${job.isComplete}</div></td>
             <td><button class="task-complete btn btn-outline-success btn-sm btn-responsive" data-id="${job.id}">Completed</button></td>

@@ -33,13 +33,13 @@ header {
 
   table {
       border-spacing: 5px;
-      width: 75%;
+      width: 82%;
       margin-left: 16%;
       table-layout: fixed;
   }
 
   th {
-      padding: 15px;
+      padding: 14px;
       text-align: center;
   }
 
@@ -49,6 +49,11 @@ header {
       background-color: rgba(245, 245, 245, 0.904);
       font-family: Delius-Regular;
     
+      }
+
+  .task-column {
+      width: 40%;
+      white-space: nowrap;
       }
 
   .form-control {
