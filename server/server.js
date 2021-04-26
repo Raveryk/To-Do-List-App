@@ -11,7 +11,7 @@ app.use('/to-do', toDoRouter);
 app.use(express.static('server/public'));
 
 
-//Set up PORT 
+//Set up PORT  for Heroku - will get the # from the process environment variables
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log('listening on port', PORT);
