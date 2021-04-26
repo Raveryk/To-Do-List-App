@@ -18,7 +18,7 @@ if (process.env.DATABASE_URL) {
   config = {
     host: 'localhost',
     port: 5432,
-    database: 'postgresql-rectangular-47161', // CHANGE THIS LINE to match your local database name!
+    database: 'weekend-to-do-app', // CHANGE THIS LINE to match your local database name!
   };
 }
 // this creates the pool that will be shared by all other modules

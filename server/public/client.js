@@ -14,8 +14,8 @@ function onReady() {
     $('#task-view').on('click', '.task-delete', deleteTaskHandler)
 
     textCount();
-
     getTasks();
+    
 };
 
 
@@ -59,41 +59,42 @@ function getTasks() {
         type: 'GET',
         url: '/to-do'
     }).then(response => {
-
         console.log(response);
-        //loop through response array to GET all tasks
-        for( let job of response ) {
-            if( job.isComplete == true) {
-        //variable to grab the current day/time --- I sliced the string to only show month and day -- couldn't figure out formatting.
-        let timeStamp = new Date().toISOString();
-        
-
-            
-        //Append task list to DOM.
-        $('#task-view').append(`<tr class="task-row">
-        <td class="task-column"><div class="col-md-6">${job.task}</div></td>
-        <td><div class="col-md-6">${job.due_date.slice(5,10)}</div></td>
-        <td><div class="col-md-12">on ${timeStamp.slice(5,10)}</div></td>
-        <td><div class="col-md-10"></div></td>
-        <td><button class="task-delete btn btn-outline-danger btn-sm btn-responsive" data-id="${job.id}">Delete</button></td>
-        </tr>`);
-        $('.task-row').css('text-decoration', 'line-through').css('color', 'green');
-        } else {
-        $('#task-view').append(`<tr>
-        <td class="task-column"><div class="col-md-6">${job.task}</div></td>
-        <td><div class="col-md-6">${job.due_date.slice(5,10)}</div></td>
-        <td><div class="col-md-12">${job.isComplete}</div></td>
-        <td><button class="task-complete btn btn-outline-success btn-sm btn-responsive" data-id="${job.id}">Completed</button></td>
-        <td><button class="task-delete btn btn-outline-danger btn-sm btn-responsive" data-id="${job.id}">Delete</button></td>
-        </tr>`);
-        }
-
-    } //end loop
-        
+        renderToDom(response);
     }).catch(error => {
         console.log('error in GET call', error);
     });
     
+}
+
+function renderToDom(taskArray) {
+//variable to grab the current day/time --- I sliced the string to only show month and day -- couldn't figure out formatting.
+    let timeStamp = new Date().toISOString();
+    //loop through response array to GET all tasks
+    for( let job of taskArray ) {
+
+        if( job.isComplete == true) {
+
+            $('#task-view').append(`<tr class="task-row">
+                <td class="task-column"><div class="col-md-6">${job.task}</div></td>
+                <td><div class="col-md-6">${job.due_date.slice(5,10)}</div></td>
+                <td><div class="col-md-12">on ${timeStamp.slice(5,10)}</div></td>
+                <td><div class="col-md-10"></div></td>
+                <td><button class="task-delete btn btn-outline-danger btn-sm btn-responsive" data-id="${job.id}">Delete</button></td>
+                </tr>`);
+            $('.task-row').css('text-decoration', 'line-through').css('color', 'green');
+            } else {
+            $('#task-view').append(`<tr>
+                <td class="task-column"><div class="col-md-6">${job.task}</div></td>
+                <td><div class="col-md-6">${job.due_date.slice(5,10)}</div></td>
+                <td><div class="col-md-12">${job.isComplete}</div></td>
+                <td><button class="task-complete btn btn-outline-success btn-sm btn-responsive" data-id="${job.id}">Completed</button></td>
+                <td><button class="task-delete btn btn-outline-danger btn-sm btn-responsive" data-id="${job.id}">Delete</button></td>
+            </tr>`);
+       
+            }
+    }
+ //end loop
 }
 
 
